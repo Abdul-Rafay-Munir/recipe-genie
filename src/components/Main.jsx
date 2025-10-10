@@ -29,7 +29,7 @@ export default function Main() {
     return (
         <main>
             <form action={addIngredient} className="add-ingredient-form">
-                <input type="text" name="ingredient" id="ingredient" placeholder="e.g. oregano"/>
+                <input type="text" name="ingredient" id="ingredient" placeholder="e.g. oregano" required/>
                 <button>Add ingredient</button>
             </form>
             {ingredients.length > 0 && <IngredientList ref={recipeSection} ingredients={ingredients} getRecipe={getRecipe} />}
