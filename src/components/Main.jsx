@@ -28,8 +28,14 @@ export default function Main() {
     
     return (
         <main>
-            <form action={addIngredient} className="add-ingredient-form">
-                <input type="text" name="ingredient" id="ingredient" placeholder="e.g. oregano" required/>
+            <form action={addIngredient} className="flex justify-center gap-[11px] h-[38px]">
+                <input 
+                type="text" 
+                name="ingredient" 
+                id="ingredient" 
+                placeholder="e.g. oregano"
+                className="border border-gray-300 rounded-md flex-grow min-w-[150px] max-w-[400px] px-[9px] py-[13px] rounded-sm"
+                required/>
                 <button>Add ingredient</button>
             </form>
             {ingredients.length > 0 && <IngredientList ref={recipeSection} ingredients={ingredients} getRecipe={getRecipe} />}
