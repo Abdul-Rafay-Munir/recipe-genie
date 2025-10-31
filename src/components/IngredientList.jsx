@@ -1,18 +1,18 @@
 export default function IngredientList(props) {
     const ingredientsListItems = props.ingredients.map(ingredient => (
-                <li key={ingredient}>{ingredient}</li>
+                <li key={ingredient} className="text-[#475467] leading-[28px]">{ingredient}</li>
             )
         )
     return (
         <section>
                 <h2>Ingredients on hand:</h2>
-                <ul className="ingredients-list">{ingredientsListItems}</ul>
-                {props.ingredients.length > 3 && <div className="get-recipe-container">
+                <ul className="mb-[48px]">{ingredientsListItems}</ul>
+                {props.ingredients.length > 3 && <div className="flex flex-wrap justify-between gap-[12px] items-center rounded-lg bg-[#fde3c3] px-[28px] py-[10px]">
                     <div ref={props.ref}>
-                        <h3>Ready for a recipe?</h3>
-                        <p>Generate a recipe from your list of ingredients.</p>
+                        <h3 className="text-lg font-medium leading-6">Ready for a recipe?</h3>
+                        <p className="text-[#333] text-sm leading-5">Generate a recipe from your list of ingredients.</p>
                     </div>
-                    <button onClick={props.getRecipe}>Get a recipe</button>
+                    <button onClick={props.getRecipe} className="text-[#FAFAF8] font-inter text-sm bg-[#ec7f13] border-none rounded-md shadow-xs px-[17px] py-[9px] cursor-pointer flex-shrink-0">Get a recipe</button>
                 </div>}
             </section>
     )
