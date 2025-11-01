@@ -8,3 +8,9 @@ body{
   font-family: "Inter", sans-serif;
   background: #f9f9f9;
 }
+
+@layer components{
+  .primary-btn{
+    @apply text-[#FAFAF8] font-inter text-sm bg-[#ec7f13] border-none rounded-md shadow-xs px-[17px] py-[9px] cursor-pointer
+  }
+}

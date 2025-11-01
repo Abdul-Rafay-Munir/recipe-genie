@@ -36,7 +36,7 @@ export default function Main() {
                 placeholder="e.g. oregano"
                 className="border border-gray-300 rounded-md flex-grow min-w-[150px] max-w-[400px] px-[9px] py-[13px] rounded-sm"
                 required/>
-                <button className="text-[#FAFAF8] font-inter text-sm bg-[#ec7f13] border-none rounded-md w-[150px]">+ Add ingredient</button>
+                <button className="primary-btn">+ Add ingredient</button>
             </form>
             {ingredients.length > 0 && <IngredientList ref={recipeSection} ingredients={ingredients} getRecipe={getRecipe} />}
             {recipe && <Recipe recipe={recipe} />}

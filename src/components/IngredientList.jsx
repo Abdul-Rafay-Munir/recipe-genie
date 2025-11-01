@@ -12,7 +12,7 @@ export default function IngredientList(props) {
                         <h3 className="text-lg font-medium leading-6">Ready for a recipe?</h3>
                         <p className="text-[#333] text-sm leading-5">Generate a recipe from your list of ingredients.</p>
                     </div>
-                    <button onClick={props.getRecipe} className="text-[#FAFAF8] font-inter text-sm bg-[#ec7f13] border-none rounded-md shadow-xs px-[17px] py-[9px] cursor-pointer flex-shrink-0">Get a recipe</button>
+                    <button onClick={props.getRecipe} className="primary-btn">Get a recipe</button>
                 </div>}
             </section>
     )
