@@ -27,7 +27,7 @@ export default function Main() {
     }
     
     return (
-        <main>
+        <main className="px-[30px] pt-[30px] pb-[10px]">
             <form action={addIngredient} className="flex justify-center gap-[11px] h-[38px]">
                 <input 
                 type="text" 
