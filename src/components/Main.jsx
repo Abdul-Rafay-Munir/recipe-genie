@@ -28,15 +28,15 @@ export default function Main() {
     
     return (
         <main className="px-[30px] pt-[30px] pb-[10px]">
-            <form action={addIngredient} className="flex justify-center gap-[11px] h-[38px]">
+            <form action={addIngredient} className="flex flex-col sm:flex-row justify-center gap-[11px] w-full">
                 <input 
                 type="text" 
                 name="ingredient" 
                 id="ingredient" 
                 placeholder="e.g. oregano"
-                className="border border-gray-300 rounded-md flex-grow min-w-[150px] max-w-[400px] px-[9px] py-[13px] rounded-sm"
+                className="border border-gray-300 rounded-md flex-grow w-full sm:max-w-[400px] px-[9px] py-[13px] rounded-sm"
                 required/>
-                <button className="primary-btn w-full sm:w-auto">+ Add ingredient</button>
+                <button className="primary-btn w-full sm:w-[150px]">+ Add ingredient</button>
             </form>
             {ingredients.length > 0 && <IngredientList ref={recipeSection} ingredients={ingredients} getRecipe={getRecipe} />}
             {recipe && <Recipe recipe={recipe} />}
