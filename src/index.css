@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
-*{
+* {
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: "Inter", sans-serif;
   background: #f9f9f9;
 }
 
-@theme{
-    --font-sans: Inter, sans-serif;
+@theme {
+  --font-sans: Inter, sans-serif;
 }
 
-@layer components{
-  .primary-btn{
+@layer components {
+  .primary-btn {
     @apply text-[#FAFAF8] font-sans text-sm bg-[#ec7f13] border-none rounded-md shadow-xs px-[17px] py-[9px] cursor-pointer;
   }
 }

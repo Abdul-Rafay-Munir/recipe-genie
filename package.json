@@ -12,9 +12,11 @@
   "dependencies": {
     "@huggingface/inference": "^4.8.0",
     "@tailwindcss/vite": "^4.1.16",
+    "groq-sdk": "^0.37.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-markdown": "^10.1.0",
+    "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
     "tailwindcss": "^4.1.16"
   },

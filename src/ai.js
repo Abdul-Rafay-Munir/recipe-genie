@@ -1,24 +1,42 @@
-import { HfInference } from '@huggingface/inference'
+const SPOONACULAR_API_KEY = import.meta.env.VITE_SPOONACULAR_KEY;
 
-const SYSTEM_PROMPT = `
-You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You don't need to use every ingredient they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your response in markdown to make it easier to render to a web page
-`
-const hf = new HfInference(import.meta.env.VITE_HF_ACCESS_TOKEN);
+export async function getRecipeFromSpoonacular(ingredientsArr) {
+  const ingredientsString = ingredientsArr.join(", ");
+  try {
+    const res = await fetch(
+      `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsArr}&number=1&ranking=1&ignorePantry=true&apiKey=${SPOONACULAR_API_KEY}`,
+    );
 
+    const data = await res.json();
 
-export async function getRecipeFromMistral(ingredientsArr) {
-    const ingredientsString = ingredientsArr.join(", ")
-    try {
-        const response = await hf.chatCompletion({
-            model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
-            messages: [
-                { role: "system", content: SYSTEM_PROMPT },
-                { role: "user", content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!` },
-            ],
-            max_tokens: 1024,
-        })
-        return response.choices[0].message.content
-    } catch (err) {
-        console.error(err.message)
+    if (!data.length) {
+      return "No recipe found with these ingredients";
     }
+
+    const recipeId = data[0].id;
+
+    const recipeRes = await fetch(
+      `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${SPOONACULAR_API_KEY}`,
+    );
+
+    const recipeData = await recipeRes.json();
+
+    return formatRecipeMarkdown(recipeData);
+  } catch (err) {
+    console.error(err.message);
+  }
+}
+
+function formatRecipeMarkdown(recipe) {
+  return `
+## ${recipe.title}
+
+![${recipe.title}](${recipe.image})
+
+### Ingredients
+${recipe.extendedIngredients.map((ing) => `- ${ing.original}`).join("\n")}
+
+### Instructions
+${recipe.instructions || "_No instructions available._"}
+`;
 }
